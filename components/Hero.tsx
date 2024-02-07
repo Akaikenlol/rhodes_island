@@ -12,16 +12,17 @@ const Hero = () => {
 					height={101}
 					className="object-contain"
 				/>
-				<h1 className="sm:text-6xl text-5xl text-white lg:max-w-lg font-bold leading-loose">
-					Explore The <span className="">Divers Realms</span> of Rhodes Island
+				<h1 className="sm:text-6xl text-5xl text-white lg:max-w-lg font-bold leading-relaxed">
+					Explore The <span className="text-teal-500">Divers Realms</span> of
+					Rhodes Island
 				</h1>
 			</div>
 			<div className="lg:flex-1 relative w-full h-[50vh] justify-center">
 				<Image
 					src={"/assets/RI.svg"}
-					alt="mostima"
-					width={120}
-					height={120}
+					alt="RI"
+					width={1000}
+					height={1000}
 					className="object-contain"
 				/>
 			</div>

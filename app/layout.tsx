@@ -21,7 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="bg-primary-500 text-slate-100">
 			<body className={dmMono.className}>
-				<main className="max-w-7xl mx-auto">
+				<main className="max-w-7xl mx-auto bg-slate-700">
 					<Hero />
 					{children}
 				</main>
