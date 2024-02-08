@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export interface OperatorCardProps {
 	name: string;
-	image: {
+	art: {
 		name: string;
 		link: string;
 	}[];
@@ -22,12 +23,16 @@ interface Prop {
 	index: number;
 }
 
-const OperatorCard = ({ operator }: Prop) => {
+function OperatorCard({ operator }: Prop) {
 	return (
 		<div className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100">
 			<div className="relative w-full h-[40vh]">
 				<Image
-					src={operator.image[2].link}
+					src={
+						operator.art && operator.art[0]
+							? operator.art[0].link
+							: "/assets/mostima.png"
+					}
 					alt={operator.name}
 					fill
 					className="rounded-xl object-cover object-center w-full h-full"
@@ -54,7 +59,7 @@ const OperatorCard = ({ operator }: Prop) => {
 							height={18}
 							className="object-contain"
 						/>
-						<p className="text-black">{operator.affiliation}</p>
+						<p className="text-black">{operator.affiliation[0]}</p>
 					</div>
 					<div className="flex flex-row gap-2 items-center">
 						<Image
@@ -70,6 +75,6 @@ const OperatorCard = ({ operator }: Prop) => {
 			</div>
 		</div>
 	);
-};
+}
 
 export default OperatorCard;

@@ -21,8 +21,8 @@ const Hero = () => {
 				<Image
 					src={"/assets/RI.svg"}
 					alt="RI"
-					width={1000}
-					height={1000}
+					width={800}
+					height={800}
 					className="object-contain"
 				/>
 			</div>
