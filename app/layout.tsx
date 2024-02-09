@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import "./globals.css";
 import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 
 const dmMono = DM_Mono({
 	subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
 				<main className="max-w-7xl mx-auto bg-slate-700">
 					<Hero />
 					{children}
+					<Footer />
 				</main>
 			</body>
 		</html>
