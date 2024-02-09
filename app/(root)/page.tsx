@@ -1,9 +1,10 @@
 import OperatorCard, { OperatorCardProps } from "@/components/Card";
 import Link from "next/link";
 import { fetchOperator } from "@/lib/actions/actions";
+import LoadMore from "@/components/LoadMore";
 
 export default async function Home() {
-	const data = await fetchOperator(6);
+	const data = await fetchOperator(6, 2);
 	return (
 		<main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
 			<h2 className="text-3xl text-white font-bold">
@@ -17,6 +18,7 @@ export default async function Home() {
 					</Link>
 				))}
 			</section>
+			<LoadMore />
 		</main>
 	);
 }

@@ -26,7 +26,7 @@ interface Prop {
 function OperatorCard({ operator }: Prop) {
 	return (
 		<div className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100">
-			<div className="relative w-full h-[40vh]">
+			<div className="relative w-full sm:h-[40vh] h-[100vh]">
 				<Image
 					src={
 						operator.art && operator.art[0]
