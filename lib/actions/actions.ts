@@ -1,10 +1,10 @@
 "use server";
 
-const MAX_LIMIT = 12;
+let Max_limit = 12;
 
-export const fetchOperator = async (rarity: number, page: number) => {
+export const fetchOperator = async (rarity: number) => {
 	const response = await fetch(
-		`https://rhodesapi.up.railway.app/api/operator?rarity=${rarity}&page=${page}`
+		`https://rhodesapi.up.railway.app/api/operator?rarity=${rarity}`
 	);
 
 	const data = await response.json();
