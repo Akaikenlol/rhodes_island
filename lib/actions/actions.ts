@@ -9,9 +9,10 @@ export const fetchOperator = async (rarity: number) => {
 
 	const data = await response.json();
 
-	const sixStarOperators = data.filter(
-		(operator: any) => operator.rarity === 6
-	);
+	// const sixStarOperators = data.filter(
+	// 	(operator: any) => operator.rarity === 6
+	// );
 
-	return sixStarOperators;
+	// return sixStarOperators;
+	return data;
 };
