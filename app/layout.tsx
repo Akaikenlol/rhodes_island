@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Mono } from "next/font/google";
 import "./globals.css";
-import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
+import Hero from "@/components/shared/Hero";
+import Footer from "@/components/shared/Footer";
 
 const dmMono = DM_Mono({
 	subsets: ["latin"],
