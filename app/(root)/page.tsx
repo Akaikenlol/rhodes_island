@@ -1,9 +1,9 @@
-import OperatorCard, { OperatorCardProps } from "@/components/shared/Card";
+import OperatorCard from "@/components/shared/Card";
 import Link from "next/link";
-import { fetchOperator, fetchSixStarOperator } from "@/lib/actions/actions";
+import { fetchSixStarOperator } from "@/lib/actions/actions";
 import LoadMore from "@/components/shared/LoadMore";
-import { Input } from "@/components/ui/input";
 import Search from "@/components/shared/Search";
+import { OperatorCardProps } from "@/types";
 
 export default async function Home() {
 	const data = await fetchSixStarOperator();
