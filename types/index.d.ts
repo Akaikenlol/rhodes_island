@@ -3,13 +3,36 @@ export interface URLProps {
 	searchParams: { [key: string]: string | undefined };
 }
 
-declare type FormUrlQueryParams = {
-	searchParams: string;
-	key: string;
-	value: string;
-};
+export interface Operator {
+	params: { name: string };
+	rarity: number;
+	profession: string;
+	avatar: string;
+}
 
-declare type RemoveUrlQueryParams = {
-	searchParams: string;
-	keysToRemove: string[];
-};
+export interface OperatorCardProps {
+	name: string;
+	art: {
+		name: string;
+		link: string;
+	}[];
+
+	availability: string;
+	affiliation: string;
+	class: string[];
+	lore: {
+		combat_experience: string;
+	};
+	rarity: number;
+}
+
+export interface Prop {
+	operator: OperatorCardProps;
+	index: number;
+}
+
+export interface ProfilePageProps {
+	params: {
+		id: string;
+	};
+}

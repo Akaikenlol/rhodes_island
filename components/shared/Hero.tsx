@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -9,13 +10,15 @@ const Hero = () => {
 					Explore The <span className="text-teal-500">Divers Realms</span> of
 					Rhodes Island
 				</h1>
-				<Image
-					src={"/assets/RI.svg"}
-					alt="RI"
-					width={400}
-					height={400}
-					className="object-contain"
-				/>
+				<Link href={"/"}>
+					<Image
+						src={"/assets/RI.svg"}
+						alt="RI"
+						width={400}
+						height={400}
+						className="object-contain"
+					/>
+				</Link>
 			</div>
 		</header>
 	);

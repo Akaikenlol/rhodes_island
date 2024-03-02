@@ -1,27 +1,7 @@
+import { OperatorCardProps, Prop } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
-export interface OperatorCardProps {
-	name: string;
-	art: {
-		name: string;
-		link: string;
-	}[];
-
-	availability: string;
-	affiliation: string;
-	class: string[];
-	lore: {
-		combat_experience: string;
-	};
-	rarity: number;
-}
-
-interface Prop {
-	operator: OperatorCardProps;
-	index: number;
-}
 
 function OperatorCard({ operator }: Prop) {
 	return (
