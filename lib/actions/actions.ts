@@ -1,15 +1,25 @@
 "use server";
 
-export const fetchOperator = async (rarity: number) => {
-	const response = await fetch(
-		`https://api.rhodesapi.com/api/operator?rarity=${rarity}`
-	);
+// export const fetchOperator = async (rarity: number) => {
+// 	const response = await fetch(
+// 		`https://api.rhodesapi.com/api/operator?rarity=${rarity}`
+// 	);
+// 	const data = await response.json();
+// 	return data;
+// };
+
+export const fetchOperator = async () => {
+	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+		cache: "no-store",
+	});
 	const data = await response.json();
 	return data;
 };
 
 export const fetchSixStarOperator = async () => {
-	const response = await fetch(`https://api.rhodesapi.com/api/operator`);
+	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+		cache: "no-store",
+	});
 
 	const data = await response.json();
 
@@ -31,6 +41,6 @@ export const fetchOperatorByName = async (name: string) => {
 	}
 
 	const data = await response.json();
-	console.log(data);
+	// console.log(data);
 	return data;
 };

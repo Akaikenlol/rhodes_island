@@ -2,10 +2,23 @@ import { OperatorCardProps, Prop } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Motion } from "./Motion";
 
-function OperatorCard({ operator }: Prop) {
+const variants = {
+	hidden: { opacity: 0 },
+	visible: { opacity: 1 },
+};
+
+function OperatorCard({ operator, index }: Prop) {
 	return (
-		<div className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100">
+		<Motion
+			className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100"
+			variants={variants}
+			initial="hidden"
+			animate="visible"
+			transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.25 }}
+			viewport={{ amount: 0 }}
+		>
 			<div className="relative w-full sm:h-[40vh] h-[100vh]">
 				<Image
 					src={
@@ -53,7 +66,7 @@ function OperatorCard({ operator }: Prop) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Motion>
 	);
 }
 

@@ -1,25 +1,23 @@
 "use client";
 
-import { fetchOperator } from "@/lib/actions/actions";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import OperatorCard, { OperatorCardProps } from "./Card";
+import OperatorCard from "./Card";
 import Link from "next/link";
+import { OperatorCardProps } from "@/types";
 
 const LoadMore = () => {
 	const { ref, inView } = useInView();
 	const [data, setData] = useState<OperatorCardProps[]>([]);
-	// const [page, setPage] = useState(1);
 
 	// useEffect(() => {
 	// 	if (inView) {
-	// 		fetchOperator(6, page).then((res) => {
-	// 			setData((data) => [...data, ...res]);
-	// 			setPage((page) => page + 1);
+	// 		fetchSixStarOperator().then((res) => {
+	// 			setData(res);
 	// 		});
 	// 	}
-	// }, [inView, page]);
+	// }, [inView]);
 
 	return (
 		<>
