@@ -1,11 +1,13 @@
 import OperatorCard from "@/components/shared/Card";
 import Link from "next/link";
-import { fetchSixStarOperator } from "@/lib/actions/actions";
+// import { fetchSixStarOperator } from "@/lib/actions/actions";
 import LoadMore from "@/components/shared/LoadMore";
 import Search from "@/components/shared/Search";
 import { OperatorCardProps } from "@/types";
+import { fetchSixStarOperator } from "@/lib/actions/action";
 
 export default async function Home() {
+	// const data = await fetchSixStarOperator();
 	const data = await fetchSixStarOperator();
 	return (
 		<main className="sm:p-12 py-14 px-8 flex flex-col gap-10">
@@ -17,11 +19,7 @@ export default async function Home() {
 			</div>
 
 			<section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-				{data.map((item: OperatorCardProps, index: number) => (
-					<Link href={`/profile/${item.name}`}>
-						<OperatorCard key={item.name} operator={item} index={index} />
-					</Link>
-				))}
+				{data}
 			</section>
 			<LoadMore />
 		</main>

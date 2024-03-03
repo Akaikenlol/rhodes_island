@@ -1,3 +1,4 @@
+import ProfileCard from "@/components/shared/ProfileCard";
 import { fetchOperatorByName } from "@/lib/actions/actions";
 import { ProfilePageProps } from "@/types";
 import Image from "next/image";
@@ -20,6 +21,7 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
 					height={500}
 					priority
 				/>
+				<ProfileCard />
 				<div className="flex flex-col text-center justify-center items-center gap-2 rounded-md">
 					<h2 className="text-black font-semibold">
 						Operator Name: {data.name}
