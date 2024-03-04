@@ -44,3 +44,17 @@ export const fetchOperatorByName = async (name: string) => {
 	// console.log(data);
 	return data;
 };
+
+export const fetchOperatorImage = async (name: string) => {
+	const response = await fetch(
+		`https://api.rhodesapi.com/api/operator/${name}/e2-image`,
+		{ cache: "no-store" }
+	);
+
+	if (!response) {
+		throw new Error("Failed to fetch operator image");
+	}
+
+	const data = await response.json();
+	return data;
+};
