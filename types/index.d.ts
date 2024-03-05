@@ -36,3 +36,11 @@ export interface ProfilePageProps {
 		id: string;
 	};
 }
+
+export interface SearchProps {
+	route: string;
+	iconPosition: string;
+	imgSrc: string;
+	placeholder: string;
+	otherClasses?: string;
+}

@@ -21,11 +21,11 @@ const ProfilePage = async ({ params }: ProfilePageProps) => {
 					priority
 				/>
 
-				<div className="flex flex-col text-center justify-center items-center gap-2 rounded-md">
-					<h2 className="text-black font-semibold">
-						Operator Name: {data.name}
-					</h2>
-					<p className="text-black font-semibold">Rarity: {data.rarity}</p>
+				<div className="flex flex-col text-center justify-center items-center gap-2 rounded-md text-black font-semibold">
+					<h2>Operator Name: {data.name}</h2>
+					<p>Rarity: {data.rarity}</p>
+					<p>Release Date Global: {data.release_dates.global}</p>
+					<p>Release Date CN: {data.release_dates.cn}</p>
 				</div>
 			</div>
 		</div>
