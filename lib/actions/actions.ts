@@ -1,13 +1,5 @@
 "use server";
 
-// export const fetchOperator = async (rarity: number) => {
-// 	const response = await fetch(
-// 		`https://api.rhodesapi.com/api/operator?rarity=${rarity}`
-// 	);
-// 	const data = await response.json();
-// 	return data;
-// };
-
 export const fetchOperator = async () => {
 	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
 		cache: "no-store",
@@ -57,4 +49,22 @@ export const fetchOperatorImage = async (name: string) => {
 
 	const data = await response.json();
 	return data;
+};
+
+export const fetchOperatorBaseOnDate = async () => {
+	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+		cache: "no-store",
+	});
+
+	const data = await response.json();
+
+	const sixStarOperators = data
+		.filter((operator: any) => operator.rarity === 6)
+		.sort(
+			(a: any, b: any) =>
+				new Date(b.release_dates).getTime() -
+				new Date(a.release_dates).getTime()
+		);
+
+	return sixStarOperators;
 };
