@@ -9,11 +9,11 @@ export default async function Home() {
 	// const data = await fetchSixStarOperator();
 	const data = await fetchOperatorBaseOnDate();
 	return (
-		<main className="sm:p-12 py-14 px-8 flex flex-col gap-10">
-			<div className="sm:flex-row flex-col flex flex-between gap-20 ">
-				<h2 className="text-3xl text-white font-bold">
-					Explore {data.length} Operators
-				</h2>
+		<main className="sm:p-10 py-10 px-8 flex flex-col gap-10 ">
+			<h2 className="text-3xl text-white font-bold max-sm:text-center">
+				Explore <span className="text-teal-500">{data.length}</span> Operators
+			</h2>
+			<div className="grid lg:grid-cols-2 sm:grid-rows-1 gap-5 ">
 				<Search
 					route="/"
 					iconPosition="left"
@@ -21,7 +21,11 @@ export default async function Home() {
 					placeholder="Search Operator..."
 					otherClasses="flex-1"
 				/>
-				<Filter filter={Filters} />
+				<Filter
+					filter={Filters}
+					otherClasses="min-h-[56px] sm:min-w-[170px] flex-1"
+					// containerClasses="hidden max-md:flex"
+				/>
 			</div>
 
 			<section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">

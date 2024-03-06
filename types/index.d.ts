@@ -44,3 +44,12 @@ export interface SearchProps {
 	placeholder: string;
 	otherClasses?: string;
 }
+
+export interface FilterProps {
+	filter: {
+		name: string;
+		value: string;
+	}[];
+	otherClasses?: string;
+	// containerClasses?: string;
+}
