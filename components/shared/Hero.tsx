@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 
 const Hero = () => {
 	const component = useRef(null);
+	const imgcomponent = useRef(null);
 
 	useEffect(() => {
 		let ctx = gsap.context(() => {
@@ -37,6 +38,17 @@ const Hero = () => {
 		return () => ctx.revert();
 	}, []);
 
+	useEffect(() => {
+		let ctx = gsap.context(() => {
+			gsap.fromTo(
+				".logo",
+				{ opacity: 0, scale: 1.5 },
+				{ scale: 1, opacity: 1, duration: 1.5, ease: "power3.inOut" }
+			);
+		});
+		return () => ctx.revert();
+	}, []);
+
 	const renderLetters = (title: string) => {
 		if (!title) return;
 
@@ -52,20 +64,20 @@ const Hero = () => {
 			ref={component}
 		>
 			<div className="lg:flex-1 relative w-full flex flex-col sm:flex-row justify-between items-center gap-10 ">
-				<h1 className="max-sm:text-4xl text-5xl text-white lg:max-w-lg font-semibold leading-relaxed max-sm:text-center title-animation">
+				<h1 className="max-sm:text-5xl text-5xl text-white lg:max-w-lg font-semibold leading-relaxed max-sm:leading-relaxed max-sm:text-center  title-animation">
 					{renderLetters("Explore The")}{" "}
 					<span className="text-teal-500">
 						{renderLetters("Divers Realms")}{" "}
 					</span>
 					{renderLetters("of Rhodes Island")}
 				</h1>
-				<Link href={"/"}>
+				<Link href={"/"} ref={imgcomponent} className="logo">
 					<Image
 						src={"/assets/RI.svg"}
 						alt="RI"
 						width={400}
 						height={400}
-						className="object-contain"
+						className="object-contain "
 					/>
 				</Link>
 			</div>
