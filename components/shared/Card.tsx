@@ -1,23 +1,28 @@
-import { OperatorCardProps, Prop } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { Motion } from "./Motion";
+"use client";
 
-const variants = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1 },
-};
+import { Prop } from "@/types";
+import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import { Motion } from "./Motion";
+import { useScroll, useTransform } from "framer-motion";
 
 function OperatorCard({ operator, index }: Prop) {
+	const ref = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["0 1", "1.33 1"],
+	});
+	const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+	const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 	return (
 		<Motion
 			className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100"
-			variants={variants}
 			initial="hidden"
 			animate="visible"
 			transition={{ duration: 0.5, ease: "easeInOut", delay: index * 0.25 }}
 			viewport={{ amount: 0 }}
+			ref={ref}
+			style={{ opacity: opacityProgress, scale: scaleProgress }}
 		>
 			<div className="relative w-full sm:h-[40vh] h-[100vh]">
 				<Image
