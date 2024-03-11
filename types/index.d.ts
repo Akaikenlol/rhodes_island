@@ -24,6 +24,10 @@ export interface OperatorCardProps {
 		combat_experience: string;
 	};
 	rarity: number;
+	release_dates: {
+		global: string;
+		cn: string;
+	};
 }
 
 export interface Prop {

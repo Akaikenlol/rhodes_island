@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { Motion } from "./Motion";
 import { useScroll, useSpring, useTransform } from "framer-motion";
+import { Badge } from "../ui/badge";
 
 function OperatorCard({ operator, index }: Prop) {
 	const ref = useRef<HTMLDivElement>(null);
@@ -33,10 +34,10 @@ function OperatorCard({ operator, index }: Prop) {
 				style={{
 					opacity: opacityProgress,
 					scale: scaleProgress,
-					transition: "all 0.3s",
+					transition: "all 0.2s",
 				}}
 			>
-				<div className="relative w-full sm:h-[40vh] h-[100vh]">
+				<div className="relative w-full max-sm:h-[40vh] h-[40vh]">
 					<Image
 						src={
 							operator.art && operator.art[0]
@@ -54,11 +55,15 @@ function OperatorCard({ operator, index }: Prop) {
 						<h2 className="font-bold text-black text-xl line-clamp-1 w-full">
 							{operator.name}
 						</h2>
-						<div className="py-1 px-2 bg-[#161921] rounded-sm">
-							<p className="text-white text-sm font-bold capitalize">
+						{operator.release_dates.global === "N/A" ? (
+							<Badge className="text-white text-sm capitalize py-1 px-2 bg-teal-500 rounded-md">
+								CN
+							</Badge>
+						) : (
+							<Badge className="text-white text-sm capitalize py-1 px-2 bg-teal-500 rounded-md">
 								{operator.availability}
-							</p>
-						</div>
+							</Badge>
+						)}
 					</div>
 					<div className="flex justify-between gap-4 items-center">
 						<div className="flex flex-row gap-2 items-center">
