@@ -43,7 +43,7 @@ export interface ProfilePageProps {
 
 export interface SearchProps {
 	route: string;
-	iconPosition: string;
+	iconPosition?: string;
 	imgSrc: string;
 	placeholder: string;
 	otherClasses?: string;
@@ -56,4 +56,15 @@ export interface FilterProps {
 	}[];
 	otherClasses?: string;
 	// containerClasses?: string;
+}
+
+export interface UrlQueryParams {
+	params: string;
+	key: string;
+	value: string | null;
+}
+
+export interface RemoveUrlQueryParams {
+	params: string;
+	keysToRemove: string[];
 }
