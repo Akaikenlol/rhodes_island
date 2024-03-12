@@ -39,7 +39,7 @@ const ProfileInfoCard = ({ data }: any) => {
 					<h3>Combat Experience: {lore.combat_experience}</h3>
 				</div>
 				<div className="flex flex-col gap-2 sm:gap-3">
-					<h3 className="text-sm sm:text-base line-clamp-1">
+					<h3 className="text-sm sm:text-base max-sm:line-clamp-4">
 						Infection Status: {lore.infection_status}
 					</h3>
 					<h3 className="flex gap-1 sm:gap-2 cursor-pointer items-center">
@@ -54,11 +54,11 @@ const ProfileInfoCard = ({ data }: any) => {
 					<h3 className="text-sm sm:text-base items-center">
 						Availability:{" "}
 						{headhunting === "Yes" && recruitable === "No" ? (
-							<Badge className="bg-yellow-500 rounded-md border-none px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm uppercase font-normal cursor-pointer">
+							<Badge className="bg-yellow-500 rounded-md border-none px-4 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm uppercase font-normal cursor-pointer">
 								Limited Headhunting
 							</Badge>
 						) : (
-							<Badge className="bg-cyan-400 rounded-md border-none px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm uppercase font-normal cursor-pointer">
+							<Badge className="bg-cyan-400 rounded-md border-none px-4 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm uppercase font-normal cursor-pointer">
 								Recruitment
 							</Badge>
 						)}
