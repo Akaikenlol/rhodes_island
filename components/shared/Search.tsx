@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 const Search = ({
 	route,
@@ -15,11 +16,11 @@ const Search = ({
 	otherClasses,
 }: SearchProps) => {
 	const router = useRouter();
+
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
 
 	const query = searchParams.get("q");
-
 	const [search, setSearch] = useState(query || "");
 
 	useEffect(() => {
@@ -49,13 +50,15 @@ const Search = ({
 		<div
 			className={`border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 ${otherClasses}`}
 		>
-			<Image
-				src={imgSrc}
-				alt="search icon"
-				width={24}
-				height={24}
-				className="cursor-pointer"
-			/>
+			<Button>
+				<Image
+					src={imgSrc}
+					alt="search icon"
+					width={24}
+					height={24}
+					className="cursor-pointer"
+				/>
+			</Button>
 			<Input
 				type="text"
 				placeholder={placeholder}

@@ -1,5 +1,7 @@
+"use client";
+
 import { FilterProps } from "@/types";
-import React from "react";
+import React, { useState } from "react";
 import {
 	Select,
 	SelectContent,
@@ -9,6 +11,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Filters } from "@/constants";
+import { useRouter, useSearchParams } from "next/navigation";
+import { formUrlQuery } from "@/lib/utils";
 
 const Filter = ({ filter, otherClasses }: FilterProps) => {
 	return (
@@ -24,7 +28,11 @@ const Filter = ({ filter, otherClasses }: FilterProps) => {
 				<SelectContent className="border-purple-200/20 bg-teal-600/50">
 					<SelectGroup>
 						{Filters.map((item, index) => (
-							<SelectItem key={index} value={item.value}>
+							<SelectItem
+								key={index}
+								value={item.value}
+								onClickCapture={() => {}}
+							>
 								{item.name}
 							</SelectItem>
 						))}
