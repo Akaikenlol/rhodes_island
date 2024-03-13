@@ -2,8 +2,9 @@ import Filter from "@/components/shared/Filter";
 import Search from "@/components/shared/Search";
 import { Filters } from "@/constants";
 import { fetchOperatorBaseOnDate } from "@/lib/actions/action";
+import { SearchParamsProps } from "@/types";
 
-export default async function Home() {
+export default async function Home({ searchParams }: SearchParamsProps) {
 	const data = await fetchOperatorBaseOnDate();
 
 	return (
