@@ -1,5 +1,7 @@
 "use server";
 
+import { GetSearchParams } from "@/types";
+
 export const fetchOperator = async () => {
 	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
 		cache: "no-store",
@@ -67,4 +69,24 @@ export const fetchOperatorBaseOnDate = async () => {
 		);
 
 	return sixStarOperators;
+};
+
+export const fetchOperatorBySearch = async (params: GetSearchParams) => {
+	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+		cache: "no-store",
+	});
+
+	const { searchQuery } = params;
+
+	const data = await response.json();
+
+	const sixStarOperators = data.filter(
+		(operator: any) => operator.rarity === 6
+	);
+
+	const filteredOperators = sixStarOperators.filter((operator: any) =>
+		operator.name.toLowerCase().includes(searchQuery.toLowerCase())
+	);
+
+	return filteredOperators;
 };
