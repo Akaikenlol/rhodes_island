@@ -47,6 +47,8 @@ export interface SearchProps {
 	imgSrc: string;
 	placeholder: string;
 	otherClasses?: string;
+	// onSearch?: (e: any) => void;
+	searchQuery?: string;
 }
 
 export interface FilterProps {
@@ -71,4 +73,8 @@ export interface RemoveUrlQueryParams {
 
 export interface SearchParamsProps {
 	searchParams: { [key: string]: string | undefined };
+}
+
+export interface GetSearchParams {
+	searchQuery: string;
 }

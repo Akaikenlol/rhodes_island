@@ -7,6 +7,11 @@ import { Input } from "../ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { Button } from "../ui/button";
+import { fetchOperatorBaseOnDate } from "@/lib/actions/action";
+import { fetchOperatorBySearch } from "@/lib/actions/actions";
+import OperatorCard from "./Card";
+import ProfileInfoCard from "./ProfileInfoCard";
+// import { fetchOperatorBySearch } from "@/lib/actions/action";
 
 const Search = ({
 	route,
@@ -14,6 +19,7 @@ const Search = ({
 	imgSrc,
 	placeholder,
 	otherClasses,
+	searchQuery,
 }: SearchProps) => {
 	const router = useRouter();
 
@@ -22,6 +28,7 @@ const Search = ({
 
 	const query = searchParams.get("q");
 	const [search, setSearch] = useState(query || "");
+	const [operator, setOperator] = useState([]);
 
 	useEffect(() => {
 		const delayDebounceFn = setTimeout(() => {
@@ -46,27 +53,46 @@ const Search = ({
 		return () => clearTimeout(delayDebounceFn);
 	}, [search, searchParams]);
 
+	const handleSearch = async () => {
+		setSearch(query || "");
+
+		const data = await fetchOperatorBySearch({ searchQuery: search });
+		setOperator(data);
+		console.log(data);
+	};
+
 	return (
-		<div
-			className={`border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 ${otherClasses}`}
-		>
-			<Button>
-				<Image
-					src={imgSrc}
-					alt="search icon"
-					width={24}
-					height={24}
-					className="cursor-pointer"
+		<>
+			<div
+				className={`border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 ${otherClasses}`}
+			>
+				<Button onClick={handleSearch}>
+					<Image
+						src={imgSrc}
+						alt="search icon"
+						width={24}
+						height={24}
+						className="cursor-pointer"
+					/>
+				</Button>
+				<Input
+					type="text"
+					placeholder={placeholder}
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
+					className="border-0 bg-transparent text-black w-full placeholder:text-black p-3"
 				/>
-			</Button>
-			<Input
-				type="text"
-				placeholder={placeholder}
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-				className="border-0 bg-transparent text-black w-full placeholder:text-black p-3"
-			/>
-		</div>
+			</div>
+			<div className="flex-center">
+				{operator && operator.length > 0 ? (
+					operator.map((op: any, index: any) => (
+						<OperatorCard operator={op} index={index} key={index} />
+					))
+				) : (
+					<div>No Result Found</div>
+				)}
+			</div>
+		</>
 	);
 };
 

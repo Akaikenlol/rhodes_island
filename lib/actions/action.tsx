@@ -1,13 +1,15 @@
 "use server";
 
 import OperatorCard from "@/components/shared/Card";
-import { OperatorCardProps, SearchParamsProps } from "@/types";
+import { GetSearchParams, OperatorCardProps } from "@/types";
 import Link from "next/link";
 
-export const fetchOperatorBaseOnDate = async () => {
+export const fetchOperatorBaseOnDate = async (params: GetSearchParams) => {
 	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
 		cache: "no-store",
 	});
+
+	const { searchQuery } = params;
 
 	const data = await response.json();
 
@@ -32,3 +34,29 @@ export const fetchOperatorBaseOnDate = async () => {
 		</Link>
 	));
 };
+
+// export const fetchOperatorBySearch = async (params: GetSearchParams) => {
+// 	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+// 		cache: "no-store",
+// 	});
+
+// 	const { searchQuery } = params;
+
+// 	const data = await response.json();
+
+// 	const sixStarOperators = data.filter(
+// 		(operator: any) => operator.rarity === 6
+// 	);
+
+// 	const filteredOperators = sixStarOperators.filter((operator: any) =>
+// 		operator.name.toLowerCase().includes(searchQuery.toLowerCase())
+// 	);
+
+// 	console.log(filteredOperators);
+
+// 	return filteredOperators.map((item: OperatorCardProps, index: number) => (
+// 		<Link href={`/profile/${item.name}`} key={item.name}>
+// 			<OperatorCard operator={item} index={index} />
+// 		</Link>
+// 	));
+// };
