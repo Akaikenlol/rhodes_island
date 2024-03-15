@@ -1,8 +1,10 @@
 import Filter from "@/components/shared/Filter";
+import ResultCard from "@/components/shared/ResultCard";
 import Search from "@/components/shared/Search";
 import { Filters } from "@/constants";
 import { fetchOperatorBaseOnDate } from "@/lib/actions/action";
 import { SearchParamsProps } from "@/types";
+import { GetServerSideProps } from "next";
 
 export default async function Home({ searchParams }: SearchParamsProps) {
 	const data = await fetchOperatorBaseOnDate({
@@ -30,6 +32,7 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 			<section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
 				{data}
 			</section>
+			{/* <ResultCard operator={operator} /> */}
 		</section>
 	);
 }

@@ -11,6 +11,7 @@ import { fetchOperatorBaseOnDate } from "@/lib/actions/action";
 import { fetchOperatorBySearch } from "@/lib/actions/actions";
 import OperatorCard from "./Card";
 import ProfileInfoCard from "./ProfileInfoCard";
+import ResultCard from "./ResultCard";
 // import { fetchOperatorBySearch } from "@/lib/actions/action";
 
 const Search = ({
@@ -39,6 +40,14 @@ const Search = ({
 					value: search,
 				});
 				router.push(newUrl, { scroll: false });
+
+				// fetch the data from api when search is changed
+				const fetchData = async () => {
+					const data = await fetchOperatorBySearch({ searchQuery: search });
+					setOperator(data);
+					console.log(data);
+				};
+				fetchData();
 			} else {
 				if (pathname === route) {
 					const newUrl = removeKeysFromQuery({
@@ -47,26 +56,20 @@ const Search = ({
 					});
 					router.push(newUrl, { scroll: false });
 				}
+				// Clear the operator when search is empty
+				setOperator([]);
 			}
 		}, 300);
 
 		return () => clearTimeout(delayDebounceFn);
 	}, [search, searchParams]);
 
-	const handleSearch = async () => {
-		setSearch(query || "");
-
-		const data = await fetchOperatorBySearch({ searchQuery: search });
-		setOperator(data);
-		console.log(data);
-	};
-
 	return (
 		<>
 			<div
 				className={`border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 ${otherClasses}`}
 			>
-				<Button onClick={handleSearch}>
+				<Button>
 					<Image
 						src={imgSrc}
 						alt="search icon"
@@ -83,15 +86,7 @@ const Search = ({
 					className="border-0 bg-transparent text-black w-full placeholder:text-black p-3"
 				/>
 			</div>
-			<div className="flex-center">
-				{operator && operator.length > 0 ? (
-					operator.map((op: any, index: any) => (
-						<OperatorCard operator={op} index={index} key={index} />
-					))
-				) : (
-					<div>No Result Found</div>
-				)}
-			</div>
+			<ResultCard operator={operator} />
 		</>
 	);
 };
