@@ -48,6 +48,7 @@ export interface SearchProps {
 	placeholder: string;
 	otherClasses?: string;
 	// onSearch?: (e: any) => void;
+	results: OperatorCardProps[];
 	searchQuery?: string;
 }
 
