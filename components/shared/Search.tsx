@@ -7,12 +7,8 @@ import { Input } from "../ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { fetchOperatorBaseOnDate } from "@/lib/actions/action";
 import { fetchOperatorBySearch } from "@/lib/actions/actions";
-import OperatorCard from "./Card";
-import ProfileInfoCard from "./ProfileInfoCard";
 import ResultCard from "./ResultCard";
-// import { fetchOperatorBySearch } from "@/lib/actions/action";
 
 const Search = ({
 	route,
@@ -21,6 +17,7 @@ const Search = ({
 	placeholder,
 	otherClasses,
 	searchQuery,
+	results,
 }: SearchProps) => {
 	const router = useRouter();
 
@@ -65,7 +62,11 @@ const Search = ({
 	}, [search, searchParams]);
 
 	return (
-		<>
+		<div className="flex flex-col gap-5">
+			<h2 className="text-3xl text-white font-bold max-sm:text-center">
+				Searched <span className="text-teal-500">{operator.length}</span>{" "}
+				Operators
+			</h2>
 			<div
 				className={`border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 ${otherClasses}`}
 			>
@@ -87,7 +88,7 @@ const Search = ({
 				/>
 			</div>
 			<ResultCard operator={operator} />
-		</>
+		</div>
 	);
 };
 

@@ -23,7 +23,11 @@ function OperatorCard({ operator, index }: Prop) {
 	const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 	const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 	return (
-		<>
+		<Motion
+			whileHover={{ scale: 1.05 }}
+			whileTap={{ scale: 0.9 }}
+			transition={{ type: "spring", stiffness: 400, damping: 10 }}
+		>
 			<Motion
 				className="max-w-sm rounded relative w-full bg-gradient-to-t from-cyan-100  to-yellow-100"
 				initial="hidden"
@@ -93,7 +97,7 @@ function OperatorCard({ operator, index }: Prop) {
 				className="fixed left-0 right-0 h-1 bottom-1 bg-teal-500/20"
 				style={{ scaleX }}
 			/>
-		</>
+		</Motion>
 	);
 }
 
