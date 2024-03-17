@@ -60,7 +60,7 @@ const Hero = () => {
 	};
 	return (
 		<header
-			className="bg-center bg-cover bg-no-repeat sm:py-4 sm:px-8 py-4 px-8 flex justify-between items-center lg:items-center max-lg:flex-col w-full sm:gap-16"
+			className="bg-center bg-cover bg-no-repeat sm:py-2 sm:px-8 py-4 px-8 flex justify-between items-center lg:items-center max-lg:flex-col w-full sm:gap-16"
 			ref={component}
 		>
 			<div className="lg:flex-1 relative w-full flex flex-col sm:flex-row justify-between items-center gap-10 ">

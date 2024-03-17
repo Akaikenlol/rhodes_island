@@ -11,7 +11,7 @@ const Loading = () => {
 				<Skeleton className="border-purple-200/20 bg-teal-600/20 flex min-h-[56px] grow items-center gap-4 rounded-md px-4 flex-1" />
 				<Skeleton className="min-h-[56px] sm:min-w-[170px] flex-1 border-purple-200/20 bg-teal-600/20 px-5 py-2.5 rounded-md" />
 			</div>
-			<div className="flex flex-col gap-10">
+			<div className="flex flex-col gap-10 mt-10">
 				<h2 className="text-3xl text-white font-bold max-sm:text-center">
 					Explore Operators
 				</h2>
