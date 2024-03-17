@@ -63,7 +63,7 @@ const Search = ({
 
 	return (
 		<div className="flex flex-col gap-5">
-			<h2 className="text-3xl text-white font-bold max-sm:text-center">
+			<h2 className="text-3xl text-white font-bold max-sm:text-center mb-5">
 				Searched <span className="text-teal-500">{operator.length}</span>{" "}
 				Operators
 			</h2>

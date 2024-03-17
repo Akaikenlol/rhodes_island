@@ -20,7 +20,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="bg-primary-500 text-slate-100 !scroll-smooth">
+		<html
+			lang="en"
+			className="bg-primary-500 text-slate-100 !scroll-smooth scrollbar-hide"
+		>
 			<body className={dmMono.className}>
 				<main className="max-w-7xl mx-auto bg-slate-700">
 					<Hero />

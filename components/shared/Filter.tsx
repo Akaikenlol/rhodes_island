@@ -11,8 +11,6 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Filters } from "@/constants";
-import { useRouter, useSearchParams } from "next/navigation";
-import { formUrlQuery } from "@/lib/utils";
 
 const Filter = ({ filter, otherClasses }: FilterProps) => {
 	return (
@@ -25,7 +23,7 @@ const Filter = ({ filter, otherClasses }: FilterProps) => {
 						<SelectValue placeholder="Select a Filter" />
 					</div>
 				</SelectTrigger>
-				<SelectContent className="border-purple-200/20 bg-teal-600/50">
+				<SelectContent className="border-purple-200/20 bg-teal-600">
 					<SelectGroup>
 						{Filters.map((item, index) => (
 							<SelectItem

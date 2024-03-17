@@ -10,7 +10,7 @@ const Header = async ({ searchParams }: SearchParamsProps) => {
 		searchQuery: searchParams.q || "",
 	});
 	return (
-		<section className="flex flex-col gap-10">
+		<section className="flex flex-col gap-5">
 			<Search
 				route="/"
 				iconPosition="left"
@@ -23,7 +23,7 @@ const Header = async ({ searchParams }: SearchParamsProps) => {
 				filter={Filters}
 				otherClasses="min-h-[56px] sm:min-w-[170px] flex-1"
 			/>
-			<h2 className="text-3xl text-white font-bold max-sm:text-center">
+			<h2 className="text-3xl text-white font-bold max-sm:text-center mt-16">
 				Explore <span className="text-teal-500">{data.length}</span> Operators
 			</h2>
 		</section>
