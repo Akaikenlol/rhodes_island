@@ -90,3 +90,68 @@ export const fetchOperatorBySearch = async (params: GetSearchParams) => {
 
 	return filteredOperators;
 };
+
+export const fetchOperatorByFilter = async (
+	params: GetSearchParams,
+	filterType: string
+) => {
+	const response = await fetch(`https://api.rhodesapi.com/api/operator`, {
+		cache: "no-store",
+	});
+
+	const { searchQuery } = params;
+
+	const data = await response.json();
+
+	let sixStarOperators = data.filter((operator: any) => operator.rarity === 6);
+
+	switch (filterType) {
+		case "all":
+			break;
+		case "newest":
+			sixStarOperators.sort((a: any, b: any) => {
+				const aDate =
+					a.release_dates.global !== "N/A"
+						? a.release_dates.global
+						: a.release_dates.cn;
+
+				const bDate =
+					b.release_dates.global !== "N/A"
+						? b.release_dates.global
+						: b.release_dates.cn;
+
+				return new Date(bDate).getTime() - new Date(aDate).getTime();
+			});
+			break;
+		case "oldest":
+			sixStarOperators.sort((a: any, b: any) => {
+				const aDate =
+					a.release_dates.global !== "N/A"
+						? a.release_dates.global
+						: a.release_dates.cn;
+				const bDate =
+					b.release_dates.global !== "N/A"
+						? b.release_dates.global
+						: b.release_dates.cn;
+
+				return new Date(aDate).getTime() - new Date(bDate).getTime();
+			});
+			break;
+		// case "limited":
+		// 	sixStarOperators.filter(
+		// 		(operator: any) =>
+		// 			operator.headhunting === "Yes" && operator.recruitable === "No"
+		// 	);
+
+		// 	break;
+		// case "recruitable":
+		// 	sixStarOperators.filter(
+		// 		(operator: any) => operator.recruitable === "Yes"
+		// 	);
+		// 	break;
+		default:
+			break;
+	}
+
+	return sixStarOperators;
+};

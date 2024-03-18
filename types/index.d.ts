@@ -78,4 +78,5 @@ export interface SearchParamsProps {
 
 export interface GetSearchParams {
 	searchQuery: string;
+	filterType?: string | string[];
 }
