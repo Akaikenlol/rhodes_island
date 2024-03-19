@@ -137,18 +137,6 @@ export const fetchOperatorByFilter = async (
 				return new Date(aDate).getTime() - new Date(bDate).getTime();
 			});
 			break;
-		// case "limited":
-		// 	sixStarOperators.filter(
-		// 		(operator: any) =>
-		// 			operator.headhunting === "Yes" && operator.recruitable === "No"
-		// 	);
-
-		// 	break;
-		// case "recruitable":
-		// 	sixStarOperators.filter(
-		// 		(operator: any) => operator.recruitable === "Yes"
-		// 	);
-		// 	break;
 		default:
 			break;
 	}
