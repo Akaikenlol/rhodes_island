@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 
 const Hero = () => {
 	const component = useRef(null);
-	const imgcomponent = useRef(null);
+	const imgComponent = useRef(null);
 
 	useEffect(() => {
 		let ctx = gsap.context(() => {
@@ -71,7 +71,7 @@ const Hero = () => {
 					</span>
 					{renderLetters("of Rhodes Island")}
 				</h1>
-				<Link href={"/"} ref={imgcomponent} className="logo">
+				<Link href={"/"} ref={imgComponent} className="logo">
 					<Image
 						src={"/assets/RI.svg"}
 						alt="RI"
